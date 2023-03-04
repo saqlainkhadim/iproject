@@ -21,3 +21,6 @@ Homestead.yaml
 Homestead.json
 /.vagrant
 .phpunit.result.cache
+/application/storage/framework/cache/data/
+.idea/
+application/storage/framework/views/
