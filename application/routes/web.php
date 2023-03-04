@@ -301,6 +301,7 @@ Route::group(['prefix' => 'tasks'], function () {
     Route::post("/content/{task}/edit-mynotes", "Tasks@updateMyNotes")->where('task', '[0-9]+');
 
 });
+Route::get('/tasks/{id}/change_task_client_status', 'Tasks@change_task_client_status');
 Route::resource('tasks', 'Tasks');
 
 //LEADS & LEAD

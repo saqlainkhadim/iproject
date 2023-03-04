@@ -140,6 +140,30 @@
         @if(config('system.settings_tasks_kanban_date_due') == 'show')
         <span><strong>Estimated/Delivery Date:</strong>: {{ runtimeDate($task->task_date_due) }}</span>
         @endif
+        {{--@if($board['id'] == 3)--}}
+            {{--@dd($board)--}}
+        {{--@endif()--}}
+
+        @if($board['id'] == 3)
+            @if( isset($task->task_client_status) && $task->task_client_status == "approved")
+                <i class="bi bi-check-circle-fill"></i>Approved
+            @elseif( isset($task->task_client_status) && $task->task_client_status == "rejected")
+                <i class="bi bi-x-circle-fill"></i>Rejected
+            @elseif( isset(auth()->user()->type) && auth()->user()->type == "client" )
+                <a href="/tasks/{{$task->task_id}}/change_task_client_status?task_client_status=approved">
+                    <button style="border: 1px solid black;border-radius: 7px;" class="stopPropagation">
+                        <i class="bi bi-check"></i>
+                    </button>
+                </a>
+                <a href="/tasks/{{$task->task_id}}/change_task_client_status?task_client_status=rejected">
+                    <button style="border: 1px solid black;border-radius: 7px;" class="stopPropagation">
+                        <i class="bi bi-x"></i>
+                    </button>
+                </a>
+                <br />
+            @endif
+        @endif
+
 
         <!--show enabled custom fields-->
         @foreach($task->fields as $field)
@@ -215,4 +239,11 @@
         </div> -->
     </div>
 </div>
+
+    <script>
+        $('.stopPropagation').click(function(event) {
+            // Prevent the event from bubbling up to the parent element
+            event.stopPropagation();
+        });
+    </script>
 @endforeach

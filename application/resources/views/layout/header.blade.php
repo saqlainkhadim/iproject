@@ -61,6 +61,10 @@
     <!--PRINTING CSS-->
     <link href="public/css/print.css?v={{ config('system.versioning') }}" rel="stylesheet">
 
+
+    <!-- Option 1: Include in HTML -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
     <!-- Favicon icon -->
     <link rel="apple-touch-icon" sizes="57x57" href="public/images/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="public/images/favicon/apple-icon-60x60.png">

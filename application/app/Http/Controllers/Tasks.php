@@ -3440,4 +3440,17 @@ class Tasks extends Controller {
         //return
         return $stats;
     }
+    public function change_task_client_status( $id, Request $request)
+    {
+        if(isset(auth()->user()->type) && auth()->user()->type=="client"){
+            $task = Task::where( 'task_id', $id)->update([
+                'task_client_status'=> $request->task_client_status
+            ]);
+            return redirect()->back();
+
+        }else{
+            return redirect()->back();
+        }
+
+    }
 }
