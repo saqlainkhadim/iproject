@@ -62,7 +62,7 @@ class Edit {
         }
 
         //permission: does user have permission to edit this project
-        if ($this->projectpermissions->check('edit', $project_id)) {
+        if ( auth()->user()->type =="team" || $this->projectpermissions->check('edit', $project_id)) {
             return $next($request);
         }
 
